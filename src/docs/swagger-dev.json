@@ -1,0 +1,19 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Documentação da API Full",
+    "description": "Esta é a API do projeto full",
+    "version": "0.0.1",
+    "contact": {
+      "name": "Admin Bro",
+      "url": "http://localhost:3333/admin",
+      "email": "bruno.futema@outlook.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3333",
+      "description": "Servidor de desenvolvimento"
+    }
+  ]
+}

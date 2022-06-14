@@ -1,0 +1,99 @@
+<style>
+  .message-content {
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 600px;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+  }
+  header {
+    color: #F0F0F0;
+    margin-bottom: 25px;
+    background-color: #7D40FF;
+    padding: 16px;
+  }
+  header h1 {
+    font-size: 26px;
+  }
+  main {
+    margin: 40px 0;
+  }
+  main h2 {
+    color: #373435;
+  }
+  main p {
+    text-align: justify;
+    line-height: 28px;
+    margin: 16px 32px;
+  }
+  main a {
+    border-radius: 16px;
+    border: 1px solid #7D40FF;
+    background: #7D40FF;
+
+    color: #F0F0F0;
+    text-decoration: none;
+
+    padding: 16px 32px;
+    margin: 8px 0;
+
+    display: inline-block;
+
+    cursor: pointer;
+
+    transition: all 400ms;
+  }
+  main a:hover {
+    border: 1px solid #7D40FF;
+    background: transparent;
+
+    color: #7D40FF;
+  }
+  footer {
+    color: #F0F0F0;
+    margin-top: 25px;
+    background-color: #7D40FF;
+    padding: 64px 32px;
+    text-align: left;
+  }
+  footer strong {
+    font-size: 24px;
+  }
+  footer p {
+    margin: 40px 0;
+  }
+  footer span {
+    font-size: 12px;
+  }
+</style>
+
+<div class="message-content">
+    <header>
+      <h1>Confirme seu e-mail</h1>
+    </header>
+
+    <main>
+      <h2>Olá, {{name}}</h2>
+
+      <p>Bem vindo à plataforma, confirme seu e-mail para o seu primeiro acesso.</p>
+
+      <a href="{{link}}">
+        Confirmar e-email
+      </a>
+    </main>
+
+    <footer>
+      <strong>Equipe Devxperience</strong>
+
+      <p>
+        Caso tenha alguma dúvida ou queira entrar em contato envie um e-mail para oi@devxperience.com.br
+      </p>
+
+      <span>
+        Devxperience Financeiro S.A. 41.881.697/0001-34<br />
+        Rua: José Romano, 28 - 03322-040 - São Paulo - SP
+      </span>
+    </footer>
+  </div>

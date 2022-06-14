@@ -1,0 +1,57 @@
+paths:
+  /users:
+    get:
+      tags:
+        - Users
+      summary: Lista todos os usuários.
+      security:
+        - BearerAuth: []
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Retorna todos os dados de todos os usuários.
+        500:
+          description: Erro interno no servidor.
+
+    post:
+      tags:
+        - Users
+      summary: Cadastra um novo usuário.
+      security:
+        - BearerAuth: []
+      produces:
+        - application/json
+      responses:
+        201:
+          description: Usuário cadastrado com sucesso.
+        400:
+          description: Solicitação mal sucedida.
+        403:
+          description: Um usuário com esse username/e-mail já existe.
+        500:
+          description: Erro interno no servidor.
+
+  /users/{id}:
+    get:
+      tags:
+        - Users
+      summary: Exibe os dados de um usuário.
+      security:
+        - BearerAuth: []
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Id numérico do usuário
+      responses:
+        200:
+          description: Retorna todos os dados de um usuário.
+        404:
+          description: Usuário não encontrado.
+        500:
+          description: Erro interno no servidor.
