@@ -61,7 +61,7 @@ export class createUsers1654483830776 implements MigrationInterface {
           },
           {
             name: 'lockout_expires',
-            type: 'date',
+            type: 'timestamp',
             isNullable: true,
           },
           {

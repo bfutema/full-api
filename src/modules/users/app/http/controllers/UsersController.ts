@@ -25,7 +25,7 @@ class UsersController {
     const {
       q = '',
       page = 1,
-      limit = 10,
+      limit = 50,
       sort = '',
       relations = '',
       pagination = 'true',
@@ -40,7 +40,8 @@ class UsersController {
       where: getParsedWhere(q),
       relations: getParsedRelations(relations),
       pagination: pagination === 'true',
-      searching: !!q,
+      // searching: !!q,
+      searching: true,
     });
 
     const lastPage = Math.ceil(totalUsers / Number(limit));

@@ -46,7 +46,7 @@ class UsersRepository implements IUsersRepository {
     const founds = await this._orm.findAndCount({
       relations: relations || this._relations,
       where,
-      skip: page,
+      skip: page * limit,
       take: limit,
       order,
     });

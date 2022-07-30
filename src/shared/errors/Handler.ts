@@ -9,7 +9,7 @@ function handler(
   response: Response,
   _next: NextFunction,
 ): Response {
-  console.info(err);
+  if (!(err instanceof AppError)) console.info(err);
 
   if (err instanceof FindRelationsNotFoundError) {
     return response.status(400).json({

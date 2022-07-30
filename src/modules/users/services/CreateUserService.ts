@@ -5,9 +5,10 @@ import { inject, injectable } from 'tsyringe';
 import { AppError } from '@shared/errors/AppError';
 import { Queue } from '@shared/infra/queues/queue';
 import { ICacheProvider } from '@shared/providers/CacheProvider/models/ICacheProvider';
+import { IHashProvider } from '@shared/providers/HashProvider/models/IHashProvider';
 
 import { User } from '../app/typeorm/entities/User';
-import { ICreateUser } from '../contracts/IUserDTO';
+import { ICreateUserRequest } from '../contracts/IUserDTO';
 import { IUsersRepository } from '../repositories/IUsersRepository';
 
 @injectable()
@@ -16,11 +17,14 @@ class CreateUserService {
     @inject('UsersRepository')
     private usersRepo: IUsersRepository,
 
+    @inject('HashProvider')
+    private hashProvider: IHashProvider,
+
     @inject('CacheProvider')
     private cacheProvider: ICacheProvider,
   ) {}
 
-  public async execute(data: ICreateUser): Promise<User> {
+  public async execute(data: ICreateUserRequest): Promise<User> {
     const usernameAlreadyExists = await this.usersRepo.findByUsername(
       data.username.toLowerCase().trim(),
     );
@@ -37,7 +41,14 @@ class CreateUserService {
       throw new AppError('Email already exists!', 403);
     }
 
-    const createdUser = await this.usersRepo.create(data);
+    const password_hash = await this.hashProvider.generateHash(data.password);
+
+    const createdUser = await this.usersRepo.create({
+      username: data.username.toLowerCase().trim(),
+      name: data.name.trim(),
+      email: data.email.toLowerCase().trim(),
+      password_hash,
+    });
 
     await this.cacheProvider.invalidate('users-list');
 

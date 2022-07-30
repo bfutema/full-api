@@ -29,7 +29,7 @@ declare namespace NodeJS {
     ENTITIES_EXTENSION: 'ts' | 'js';
 
     JWT_SECRET_TOKEN: string;
-    JWT_EXPIRES_IN_TOKEN: string;
+    JWT_EXPIRES_IN_SECRET_TOKEN: string;
     JWT_SECRET_REFRESH_TOKEN: string;
     JWT_EXPIRES_IN_REFRESH_TOKEN: string;
 

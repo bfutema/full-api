@@ -1,5 +1,7 @@
-import { app } from './app';
+import { server } from './app';
 
-app.listen(process.env.PORT, () => {
+import '../socket/websocket';
+
+server.listen(process.env.PORT, () => {
   console.info(`🚀 Server started on port ${process.env.PORT}!`);
 });

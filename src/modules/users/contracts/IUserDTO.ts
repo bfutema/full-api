@@ -30,6 +30,10 @@ export type ICreateUser = Omit<
   'id' | 'created_at' | 'updated_at' | 'deleted_at'
 >;
 
+export interface ICreateUserRequest extends Omit<ICreateUser, 'password_hash'> {
+  password: string;
+}
+
 /**
  * Method: GET
  * Description: Show one user

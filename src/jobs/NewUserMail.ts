@@ -19,7 +19,7 @@ class NewUserMail {
         file,
         variables: {
           name: createdUser.name,
-          link: `${process.env.APP_WEB_URL}/email_confirmation`,
+          link: `${process.env.APP_WEB_URL}/email-confirmation`,
         },
       },
     });

@@ -4,6 +4,8 @@ import '@shared/containers';
 
 import cors from 'cors';
 import express from 'express';
+import http from 'http';
+import { Server } from 'socket.io';
 import jsdoc from 'swagger-jsdoc';
 import { serve, setup } from 'swagger-ui-express';
 
@@ -16,10 +18,14 @@ import { handler } from '@shared/errors/Handler';
 
 import { connect } from '../typeorm';
 import { log } from './middlewares/log';
-import { rateLimiter } from './middlewares/rateLimiter';
+// import { rateLimiter } from './middlewares/rateLimiter';
 import { routes } from './routes';
 
 const app = express();
+
+const server = http.createServer(app);
+
+const io = new Server(server, { cors: { origin: process.env.APP_WEB_URL } });
 
 connect();
 
@@ -35,7 +41,7 @@ async function start(): Promise<void> {
   app.use(log);
 
   // Rate Limit
-  app.use(rateLimiter);
+  // app.use(rateLimiter);
 
   // Configurations
   app.use(cors());
@@ -60,4 +66,4 @@ async function start(): Promise<void> {
 
 start();
 
-export { app };
+export { server, io };
